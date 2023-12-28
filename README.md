@@ -1,2 +1,8 @@
 # Shopping-Cart
-Online Store build with React
+
+💻 Built with:
+
+React JS,
+CSS/HTML.
+
+✨ Preview is available [here](https://online-shop-by-vk.netlify.app).
