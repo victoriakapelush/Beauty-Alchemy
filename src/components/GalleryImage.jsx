@@ -1,8 +1,9 @@
 import Gallery from './Gallery.jsx'
+import Product from './Product.jsx'
 
 export default function GalleryImage() {
     const galleryImages = [
-        { index: 0, src: 'misolocream.jpg', alt: 'Misolo Moisturizing Cream' },
+        { index: 0, src: 'misolocream.jpg', alt: 'Misolo Moisturizing Cream', reference: '#100124' },
         { index: 1, src: 'saintplack.jpg', alt: 'Sane Plant Azelaic' },
         { index: 2, src: 'acidfaceserum.jpg', alt: 'Heauthy Hyaluronic Acid with Niacinamide Face Serum' },
         { index: 3, src: 'lancomespf.jpg', alt: 'A Derma Exomega Control Emollient Cream Anti Scratching' },
@@ -24,9 +25,12 @@ export default function GalleryImage() {
         { index: 19, src: 'panl.jpg', alt: 'Mishane Pani' },
         { index: 20, src: 'eyes.jpg', alt: 'Hyaluronic tinted facial serum' }
       ];
+
+      const reference = galleryImages[0].reference;
   
       return (
-        <Gallery 
-        images={galleryImages} />
+        <>
+          <Gallery images={galleryImages} />
+        </>
       );
   }

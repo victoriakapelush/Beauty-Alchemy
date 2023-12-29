@@ -3,7 +3,9 @@ export default function Header() {
         <div className="header flex-column">
             <div className="header-container">
                 <div className="heading-container">
-                    <img src="https://assets.website-files.com/630e76151b18f0773c9bd0fb/6325c003fed41f0436e9ac07_pexels-anna-nekrashevich-7946210-transcode.mp4"></img>
+                    <a href="/">
+                        <img src="https://assets.website-files.com/630e76151b18f0773c9bd0fb/6325c003fed41f0436e9ac07_pexels-anna-nekrashevich-7946210-transcode.mp4"></img>
+                    </a>
                     <h1>Beauty Alchemy</h1>
                 </div>
                 <div className="links-container flex-row">
