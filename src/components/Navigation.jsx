@@ -1,30 +1,31 @@
 import NavComponent from './NavComponent.jsx'
+import { Link } from 'react-router-dom';
 
 export default function Navigation() {
     return(
         <div className="nav-container flex-row">
             <NavComponent 
-            href="hair"
+            to="hair"
             src="./hairNav.jpg"
             div="Hair"
             />
             <NavComponent 
-            href="bodyandbath"
+            to="bodyandbath"
             src="./body-nav.jpg"
             div="Body and Bath"
             />
             <NavComponent 
-            href="face"
+            to="face"
             src="./face-nav.jpg"
             div="Face"
             />
             <NavComponent 
-            href="perfumery"
+            to="perfumery"
             src="./perfumery-nav.jpg"
             div="Perfumery"
             />
             <NavComponent 
-            href="makeup"
+            to="makeup"
             src="./makeup-nav.jpg"
             div="Makeup"
             />
