@@ -9,26 +9,8 @@ export default function Navigation() {
             src="./hairNav.jpg"
             div="Hair"
             />
-            <NavComponent 
-            href="/bodyandbath"
-            src="./body-nav.jpg"
-            div="Body and Bath"
-            />
-            <NavComponent 
-            href="/face"
-            src="./face-nav.jpg"
-            div="Face"
-            />
-            <NavComponent 
-            href="/perfumery"
-            src="./perfumery-nav.jpg"
-            div="Perfumery"
-            />
-            <NavComponent 
-            href="/makeup"
-            src="./makeup-nav.jpg"
-            div="Makeup"
-            />
+
+            
         </div>
     )
 }
