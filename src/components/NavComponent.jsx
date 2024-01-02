@@ -1,7 +1,9 @@
+
+
 export default function NavComponent(props) {
     return (
         <div className="image-border">
-            <a to={props.href}>
+            <a href={props.href}>
                 <div className="nav-image-container flex-column">
                     <img className="nav-image" src={props.src}></img>
                 </div>
