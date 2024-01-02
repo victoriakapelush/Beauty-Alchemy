@@ -20,11 +20,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
       {
-        path: "hair",
+        path: "/hair",
         element: <Hair />,
       },
       {
-        path: "bodyandbath",
+        path: "/bodyandbath",
         element: <BodyAndBath />,
       },
       {
