@@ -8,12 +8,16 @@ import Face from './components/Face.jsx'
 import Perfumery from './components/Perfumery.jsx'
 import Makeup from './components/Makeup.jsx'
 import Product from './components/Product.jsx'
+import ErrorPage from "./components/ErrorPage.jsx";
+import Misolo from './components/Misolo.jsx'
+import SanePlantAzelaic from './components/SanePlantAzelaic.jsx'
 import './index.css'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <App />,
+    errorElement: <ErrorPage />
   },
   {
     path: "hair",
@@ -37,8 +41,14 @@ const router = createBrowserRouter([
   },
   {
     path: 'product',
-    element: <Product />
-  }
+    element: <Product />,
+    children: [
+    { path: "misolo", element: <Misolo /> },
+    { path: "saneplantazelaic", element: <SanePlantAzelaic /> }
+  ]
+  },
+ 
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
