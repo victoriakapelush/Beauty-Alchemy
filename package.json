@@ -24,5 +24,6 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^5.0.8"
   },
-  "homepage": "./"
+  "homepage": "https://effortless-churros-2c21e8.netlify.app"
+
 }
