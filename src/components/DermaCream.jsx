@@ -9,15 +9,13 @@ export default function DermaCream() {
         src2: 'https://assets.website-files.com/630fa4e1220d4258b5ef5691/630fc1c9c9d63638c53f7a61_21-03.jpg',
         src3: 'https://assets.website-files.com/630fa4e1220d4258b5ef5691/630fc1c9c18cc8458c2c0d62_21-02.jpg',
         src4: 'https://assets.website-files.com/630fa4e1220d4258b5ef5691/63245f5f43f6c2652413dbb4_11-03%402x.jpg', 
-        alt: 'Lancome Teint Ultra Wear SPF15', 
-        reference: '#100121', 
-        name: 'Lancome Teint Ultra Wear SPF15' ,
-        price: '75.00',
-        discount: '150.00',
-        description: "A long-lasting foundation known for its exceptional coverage and lasting power, providing a flawless complexion throughout the day. With the added benefit of SPF15, it offers sun protection while delivering a velvety, comfortable finish for a radiant and even skin tone."
+        alt: 'A Derma Exomega Control Emollient Cream Anti Scratching', 
+        reference: '#100111', 
+        name: 'A Derma Exomega Control Emollient Cream Anti Scratching' ,
+        price: '49.00',
+        discount: '89.00',
+        description: "Immerse yourself in the calming blend, providing targeted relief for irritated areas. Elevate your skincare routine with this nurturing anti-scratching cream, where gentle care meets effective protection, leaving your skin comforted and resilient against irritation."
       };
-
-
 
     return(
         <>

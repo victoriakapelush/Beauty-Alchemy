@@ -17,8 +17,6 @@ export default function HeauthyHyaluronicAcid() {
         description: "A skincare product designed to provide effective hydration and nourishment for the skin. Infused with the powerful combination of hyaluronic acid and niacinamide, it aims to promote a plump and radiant complexion while addressing concerns such as fine lines, uneven skin tone, and texture."
       };
 
-
-
     return(
         <>
         <Header />
