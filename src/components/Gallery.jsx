@@ -4,19 +4,12 @@ import { Link } from 'react-router-dom';
 
 export default function Gallery () {
 
-
-    const handleProductClick = () => {
-      return(
-        <Link to={image.linkto}></Link>)
-    };
-
-
   const galleryImages = [
     { index: 0, src: 'misolocream.jpg', alt: 'Misolo Moisturizing Cream', reference: '#100125', name: 'Misolo Moisturising Cream', linkto: 'product/misolo' },
     { index: 1, src: 'saintplack.jpg', alt: 'Sane Plant Azelaic', reference: '#100126', name: 'Misolo Moisturising', linkto: 'product/saneplantazelaic' },
-    { index: 2, src: 'acidfaceserum.jpg', alt: 'Heauthy Hyaluronic Acid with Niacinamide Face Serum', reference: '#100125', name: 'Heauthy Hyaluronic Acid with Niacinamide Face Serum' },
-    { index: 3, src: 'lancomespf.jpg', alt: 'A Derma Exomega Control Emollient Cream Anti Scratching', reference: '#100125', name: 'Misolo Moisturising Cream' },
-    { index: 4, src: 'setofmakeup.jpg', alt: 'Verricone MD No Blush Blush SPF 90', reference: '#100125', name: 'Misolo Moisturising Cream' },
+    { index: 2, src: 'acidfaceserum.jpg', alt: 'Heauthy Hyaluronic Acid with Niacinamide Face Serum', reference: '#100125', name: 'Heauthy Hyaluronic Acid with Niacinamide Face Serum', linkto: 'product/heauthyhyaluronicacid' },
+    { index: 3, src: 'lancomespf.jpg', alt: 'A Derma Exomega Control Emollient Cream Anti Scratching', reference: '#100125', name: 'Misolo Moisturising Cream', linkto: 'product/dermacream' },
+    { index: 4, src: 'setofmakeup.jpg', alt: 'Verricone MD No Blush Blush SPF 90', reference: '#100125', name: 'Misolo Moisturising Cream', linkto: 'product/verriconeblush' },
     { index: 5, src: 'retinolacid.jpg', alt: 'Sane Plant Retinol 2% and Azelaic Acid', reference: '#100125', name: 'Misolo Moisturising Cream' },
     { index: 6, src: 'setofbrushes.jpg', alt: 'A Set of Makeup Brushes', reference: '#100125', name: 'Misolo Moisturising Cream' },
     { index: 7, src: 'tiviana.jpg', alt: 'Tiviana Tevenzi Dsaco', reference: '#100125', name: 'Misolo Moisturising Cream' },
@@ -38,7 +31,7 @@ export default function Gallery () {
   return (
     <div className='gallery-container flex-row'>
       {galleryImages.map((image) => (
-        <div key={image.index} className='gallery-image-div' onClick={() => handleProductClick(image.name)} >
+        <div key={image.index} className='gallery-image-div' >
             <Link to={image.linkto} className="gallery-image-link flex-row">
                 <img src={image.src} className='gallery-image' title={image.alt} />
                 <div className='product-name'>{image.alt}</div>

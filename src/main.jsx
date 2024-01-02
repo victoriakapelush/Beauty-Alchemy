@@ -11,6 +11,9 @@ import Product from './components/Product.jsx'
 import ErrorPage from "./components/ErrorPage.jsx";
 import Misolo from './components/Misolo.jsx'
 import SanePlantAzelaic from './components/SanePlantAzelaic.jsx'
+import HeauthyHyaluronicAcid from './components/HeauthyHyaluronicAcid.jsx'
+import DermaCream from './components/DermaCream.jsx'
+import Verricone from './components/Verricone.jsx'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -44,7 +47,10 @@ const router = createBrowserRouter([
     element: <Product />,
     children: [
     { path: "misolo", element: <Misolo /> },
-    { path: "saneplantazelaic", element: <SanePlantAzelaic /> }
+    { path: "saneplantazelaic", element: <SanePlantAzelaic /> },
+    { path: "heauthyhyaluronicacid", element: <HeauthyHyaluronicAcid /> },
+    { path: "dermacream", element: <DermaCream /> },
+    { path: "verriconeblush", element: <Verricone /> }
   ]
   },
  
