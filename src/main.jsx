@@ -15,7 +15,7 @@ import './index.css'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "https://effortless-churros-2c21e8.netlify.app",
     element: <App />,
     errorElement: <ErrorPage />
   },
