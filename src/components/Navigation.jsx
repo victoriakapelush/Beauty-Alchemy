@@ -5,7 +5,7 @@ export default function Navigation() {
     return(
         <div className="nav-container flex-row">
             <NavComponent 
-            href="https://victoriakapelush.com"
+            href="./components/hair"
             src="./hairNav.jpg"
             div="Hair"
             />
