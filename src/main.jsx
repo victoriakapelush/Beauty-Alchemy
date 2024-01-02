@@ -19,26 +19,26 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />
   },
-  {
-    path: "hair",
-    element: <Hair />,
-  },
-  {
-    path: "bodyandbath",
-    element: <BodyAndBath />,
-  },
-  {
-    path: "face",
-    element: <Face />,
-  },
-  {
-    path: "perfumery",
-    element: <Perfumery />,
-  },
-  {
-    path: "makeup",
-    element: <Makeup />,
-  },
+      {
+        path: "hair",
+        element: <Hair />,
+      },
+      {
+        path: "bodyandbath",
+        element: <BodyAndBath />,
+      },
+      {
+        path: "face",
+        element: <Face />,
+      },
+      {
+        path: "perfumery",
+        element: <Perfumery />,
+      },
+      {
+        path: "makeup",
+        element: <Makeup />,
+      },
   {
     path: 'product',
     element: <Product />,
