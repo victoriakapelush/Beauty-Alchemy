@@ -1,8 +1,20 @@
 import Header from './Header.jsx'
 import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
+import React, { useState, useEffect } from 'react';
 
 export default function BlackTouch() {
+    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    const [count, setCount] = useState(initialCount);
+
+    useEffect(() => {
+        // Update local storage whenever count changes
+        localStorage.setItem('cartCount', count.toString());
+      }, [count]);
+
+    function addToCart() {
+      setCount(count+1);
+    }
 
     const blackTouch = { 
         index: 9, 
@@ -22,6 +34,7 @@ export default function BlackTouch() {
         <>
         <Header />
         <ImageHeader 
+            count={count}
             section="Face"
             to='/face' />
             <div>
@@ -50,7 +63,7 @@ export default function BlackTouch() {
                             </div>
                         </div>
                         <div className='addtocart-button-div'>
-                            <button>Add to Cart</button>
+                            <button onClick={addToCart}>Add to Cart</button>
                         </div>
                     </div>
             </div>

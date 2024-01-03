@@ -1,8 +1,20 @@
 import Header from './Header.jsx'
 import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
+import React, { useState, useEffect } from 'react';
 
 export default function SaneRetinol() {
+    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    const [count, setCount] = useState(initialCount);
+
+    useEffect(() => {
+        //Update local storage whenever count changes
+        localStorage.setItem('cartCount', count.toString());
+    }, [count]);
+
+    function addToCart() {
+      setCount(count+1);
+    }
 
     const saneRetinol = { 
         index: 5, 
@@ -22,6 +34,7 @@ export default function SaneRetinol() {
         <>
         <Header />
         <ImageHeader 
+            count={count}
             section="Hair"
             to='/hair' />
             <div>
@@ -50,7 +63,7 @@ export default function SaneRetinol() {
                             </div>
                         </div>
                         <div className='addtocart-button-div'>
-                            <button>Add to Cart</button>
+                            <button onClick={addToCart}>Add to Cart</button>
                         </div>
                     </div>
             </div>

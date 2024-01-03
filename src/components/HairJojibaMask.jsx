@@ -1,8 +1,20 @@
 import Header from './Header.jsx'
 import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
+import React, { useState, useEffect } from 'react';
 
 export default function HairJojibaMask() {
+    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    const [count, setCount] = useState(initialCount);
+
+    useEffect(() => {
+        // Update local storage whenever count changes
+        localStorage.setItem('cartCount', count.toString());
+      }, [count]);
+
+    function addToCart() {
+        setCount(count + 1);
+    }
 
     const hairJojibaMask = { 
         index: 10, 
@@ -21,7 +33,8 @@ export default function HairJojibaMask() {
     return(
         <>
         <Header />
-        <ImageHeader 
+        <ImageHeader
+            count={count} 
             section="Body and Bath"
             to='/bodyandbath' />
             <div>
@@ -50,7 +63,7 @@ export default function HairJojibaMask() {
                             </div>
                         </div>
                         <div className='addtocart-button-div'>
-                            <button>Add to Cart</button>
+                            <button onClick={addToCart}>Add to Cart</button>
                         </div>
                     </div>
             </div>

@@ -2,8 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx'
-import Message from './components/Message.jsx'
-import MessageOutlet from './components/MessageOutlet.jsx'
 import Hair from './components/Hair.jsx'
 import HairOutlet from './components/HairOutlet.jsx'
 import BodyAndBath from './components/BodyAndBath.jsx'

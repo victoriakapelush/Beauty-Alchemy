@@ -1,8 +1,20 @@
 import Header from './Header.jsx'
 import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
+import React, { useState, useEffect } from 'react';
 
 export default function MichyNeovadiol() {
+    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    const [count, setCount] = useState(initialCount);
+
+    useEffect(() => {
+        // Update local storage whenever count changes
+        localStorage.setItem('cartCount', count.toString());
+      }, [count]);
+
+    function addToCart() {
+        setCount(count + 1);
+    }
 
     const michyNeovadiol = { 
         index: 13, 
@@ -21,7 +33,8 @@ export default function MichyNeovadiol() {
     return(
         <>
         <Header />
-        <ImageHeader 
+        <ImageHeader
+            count={count} 
             section="Body And Bath"
             to='/bodyandbath' />
             <div>
@@ -50,7 +63,7 @@ export default function MichyNeovadiol() {
                             </div>
                         </div>
                         <div className='addtocart-button-div'>
-                            <button>Add to Cart</button>
+                            <button onClick={addToCart}>Add to Cart</button>
                         </div>
                     </div>
             </div>

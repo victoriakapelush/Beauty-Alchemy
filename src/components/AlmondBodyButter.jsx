@@ -1,8 +1,14 @@
 import Header from './Header.jsx'
 import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
+import React, { useState } from 'react';
 
 export default function AlmondBodyButter() {
+    const [count, setCount] = useState(0);
+
+    function addToCart() {
+      setCount(count+1);
+    }
 
     const almondBodyButter = { 
         index: 12, 
@@ -22,6 +28,7 @@ export default function AlmondBodyButter() {
         <>
         <Header />
         <ImageHeader 
+            count={count}
             section="Face"
             to='/face' />
             <div>
@@ -50,7 +57,7 @@ export default function AlmondBodyButter() {
                             </div>
                         </div>
                         <div className='addtocart-button-div'>
-                            <button>Add to Cart</button>
+                            <button onClick={addToCart}>Add to Cart</button>
                         </div>
                     </div>
             </div>

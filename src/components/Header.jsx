@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Message from './Message.jsx'
-import { Link, Outlet } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
 
 export default function Header() {
 
@@ -23,7 +20,7 @@ export default function Header() {
                         <div className="link-text">Message</div>
                     </div>
                     </a>}
-                        position="left center">
+                        position="center">
                         <div className="flex-column message-container">
                             <h5>Message</h5>
                             <div class="message-popup-text">Usually respond within 48 hours.</div>
@@ -42,7 +39,7 @@ export default function Header() {
                         <div className="link-text">Deliver</div>
                     </div>
                     </a>}
-                        position="left center">
+                        position="center">
                         <div className="flex-row delivery-container">
                             <img className='delivery-image' src="https://assets.website-files.com/630e76151b18f0773c9bd0fb/63206768eba0817f838a3cee_truck.svg"></img>
                             <div className='flex-column delivery-box'>
@@ -61,7 +58,7 @@ export default function Header() {
                         <div className="link-text">About</div>
                     </div>
                     </a>}
-                        position="left center">
+                        position="center">
                         <div className="flex-row delivery-container">
                         <img className='delivery-image' src="https://assets.website-files.com/630e76151b18f0773c9bd0fb/6325c003fed41f0436e9ac07_pexels-anna-nekrashevich-7946210-transcode.mp4"></img>
                             <div className='flex-column delivery-box'>

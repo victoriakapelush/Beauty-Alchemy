@@ -1,8 +1,20 @@
 import Header from './Header.jsx'
 import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
+import React, { useState, useEffect } from 'react';
 
 export default function Misolo() {
+    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    const [count, setCount] = useState(initialCount);
+
+    useEffect(() => {
+        // Update local storage whenever count changes
+        localStorage.setItem('cartCount', count.toString());
+      }, [count]);
+
+    function addToCart() {
+        setCount(count + 1);
+    }
 
     const misoloCream = { 
         index: 0, 
@@ -23,8 +35,10 @@ export default function Misolo() {
         <>
         <Header />
         <ImageHeader 
+            count={count}
             section="Body and Bath"
-            to='/bodyandbath' />
+            to='/bodyandbath' 
+            />
             <div>
             <div className='product-container flex-row'>
                 <div className='product-images-container flex-column'>
@@ -51,7 +65,7 @@ export default function Misolo() {
                             </div>
                         </div>
                         <div className='addtocart-button-div'>
-                            <button>Add to Cart</button>
+                            <button onClick={addToCart}>Add to Cart</button>
                         </div>
                     </div>
             </div>

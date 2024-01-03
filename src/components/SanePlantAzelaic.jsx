@@ -1,8 +1,20 @@
 import Header from './Header.jsx'
 import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
+import React, { useState, useEffect } from 'react';
 
 export default function SanePlantAzelaic() {
+    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    const [count, setCount] = useState(initialCount);
+
+    useEffect(() => {
+        // Update local storage whenever count changes
+        localStorage.setItem('cartCount', count.toString());
+      }, [count]);
+
+    function addToCart() {
+      setCount(count+1);
+    }
 
     const SanePlantAzelaic = { 
         index: 1, 
@@ -23,7 +35,8 @@ export default function SanePlantAzelaic() {
         <Header />
         <ImageHeader 
             section="Hair"
-            to='/Hair' />
+            to='/Hair'
+            count={count} />
             <div>
             <div className='product-container flex-row'>
                 <div className='product-images-container flex-column'>
@@ -50,7 +63,7 @@ export default function SanePlantAzelaic() {
                             </div>
                         </div>
                         <div className='addtocart-button-div'>
-                            <button>Add to Cart</button>
+                            <button onClick={addToCart}>Add to Cart</button>
                         </div>
                     </div>
             </div>

@@ -1,8 +1,20 @@
 import Header from './Header.jsx'
 import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
+import React, { useState, useEffect } from 'react';
 
 export default function BodyBalm() {
+    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    const [count, setCount] = useState(initialCount);
+
+    useEffect(() => {
+        // Update local storage whenever count changes
+        localStorage.setItem('cartCount', count.toString());
+      }, [count]);
+
+    function addToCart() {
+        setCount(count + 1);
+    }
 
     const bodyBalm = { 
         index: 18, 
@@ -20,7 +32,8 @@ export default function BodyBalm() {
     return(
         <>
         <Header />
-        <ImageHeader 
+        <ImageHeader
+            count={count} 
             section="Body and Bath"
             to='/bodyandbath' />
             <div>
@@ -48,7 +61,7 @@ export default function BodyBalm() {
                             </div>
                         </div>
                         <div className='addtocart-button-div'>
-                            <button>Add to Cart</button>
+                            <button onClick={addToCart}>Add to Cart</button>
                         </div>
                     </div>
             </div>
