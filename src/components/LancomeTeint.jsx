@@ -1,4 +1,5 @@
 import Header from './Header.jsx'
+import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 
 export default function LancomeTeint() {
@@ -20,6 +21,9 @@ export default function LancomeTeint() {
     return(
         <>
         <Header />
+        <ImageHeader 
+            section="Makeup"
+            to='/makeup' />
             <div>
             <div className='product-container flex-row'>
                 <div className='product-images-container flex-column'>

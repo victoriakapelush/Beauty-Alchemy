@@ -1,4 +1,5 @@
 import Header from './Header.jsx'
+import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 
 export default function Misolo() {
@@ -16,13 +17,14 @@ export default function Misolo() {
         price: '75.00',
         discount: '99.00',
         description: "Hydrating skincare product designed to nourish and replenish the skin's moisture, leaving it soft and supple. Formulated with premium ingredients, it aims to provide effective hydration and promote a healthy complexion."
-      };
-
-
+    };
 
     return(
         <>
         <Header />
+        <ImageHeader 
+            section="Body and Bath"
+            to='/bodyandbath' />
             <div>
             <div className='product-container flex-row'>
                 <div className='product-images-container flex-column'>

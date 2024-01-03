@@ -1,4 +1,5 @@
 import Header from './Header.jsx'
+import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 
 export default function SanePlantAzelaic() {
@@ -20,6 +21,9 @@ export default function SanePlantAzelaic() {
       return(
         <>
         <Header />
+        <ImageHeader 
+            section="Hair"
+            to='/Hair' />
             <div>
             <div className='product-container flex-row'>
                 <div className='product-images-container flex-column'>

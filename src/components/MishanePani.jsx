@@ -1,4 +1,5 @@
 import Header from './Header.jsx'
+import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 
 export default function MishanePani() {
@@ -20,6 +21,9 @@ export default function MishanePani() {
     return(
         <>
         <Header />
+        <ImageHeader 
+            section="Perfumery"
+            to='/perfumery' />
             <div>
             <div className='product-container flex-row'>
                 <div className='product-images-container flex-column'>

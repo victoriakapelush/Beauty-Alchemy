@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Product from './Product';
 import { Link } from 'react-router-dom';
 
 export default function Gallery () {

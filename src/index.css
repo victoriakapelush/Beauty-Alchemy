@@ -137,6 +137,133 @@ a {
   transition: border-color 500ms ease;
 }
 
+/* POPUP MESSAGE WINDOW */
+
+.message-container {
+  position: absolute;
+  justify-content: center;
+  border: 1px solid transparent;
+  background-color: rgb(225, 225, 225);
+  color: black;
+  font: 1rem;
+  width: 20rem;
+  padding: 1rem 1rem;
+  border-radius: 20px;
+}
+
+.message-container h5 {
+  margin: 0 0;
+  margin-bottom: .3rem;
+  text-align: center;
+}
+
+.message-popup-text {
+  font-size: .6rem;
+  text-align: center;
+}
+
+.message-popup-form {
+  justify-content: center;
+  align-items: center;
+  margin-top: .5rem;
+}
+
+.message-popup-form input, .message-popup-form textarea {
+  margin-bottom: .7rem;
+  height: .7rem;
+  width: 12rem;
+  padding-left: .5rem;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px black solid;
+}
+
+textarea {
+  height: 2.7rem !important;
+  padding-top: .4rem;
+}
+
+textarea::placeholder, input::placeholder {
+  color: black;
+}
+
+.message-popup-form button {
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px black solid;
+  padding: .3rem .5rem;
+}
+
+.message-popup-form button:hover {
+  background-color: black;
+  color: white;
+}
+
+.delivery-image {
+  width: 5rem;
+}
+
+.delivery-container {
+  justify-content: space-between;
+  width: 20rem;
+  background-color: #ffffff;
+  margin: 1rem 1rem;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  gap: 1rem;
+  padding: 1rem 1rem;
+}
+
+.delivery-box {
+  font-size: .6rem;
+}
+
+.delivery-text {
+  font-size: smaller;
+  margin: 0.1rem 0;
+}
+
+#popup-root > div {
+  background-color: rgba(0,0,0, 0.4);
+}
+
+.contact-popup {
+  gap: .2rem;
+  text-align: center;
+}
+
+.contact-popup-container {
+  margin-top: 3rem;
+  gap: 2rem;
+}
+
+.contact-popup-container > div {
+  align-items: center;
+}
+
+/* IMAGE HEADER LINK */
+
+.image-header-container {
+  justify-content: space-between;
+  width: fit-content;
+  margin: 0 auto;
+  gap: 5rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.cart-item-number {
+  border: 1px solid grey;
+  border-radius: 50%;
+  width: 1rem;
+  text-align: center;
+  font-size: .7rem;
+}
+
+.cart {
+  padding-top: .2rem;
+}
+
 /* GALLERY SECTION OF MAIN PAGE */
 
 .gallery-container {

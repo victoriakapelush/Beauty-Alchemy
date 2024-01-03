@@ -1,4 +1,5 @@
 import Header from './Header.jsx'
+import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 
 export default function HyaluronicTintedFacialSerum() {
@@ -20,6 +21,9 @@ export default function HyaluronicTintedFacialSerum() {
     return(
         <>
         <Header />
+        <ImageHeader 
+            section="Face"
+            to='/face' />
             <div>
             <div className='product-container flex-row'>
                 <div className='product-images-container flex-column'>

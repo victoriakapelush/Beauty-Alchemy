@@ -1,4 +1,5 @@
 import Header from './Header.jsx'
+import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 
 export default function BodyBalm() {
@@ -19,6 +20,9 @@ export default function BodyBalm() {
     return(
         <>
         <Header />
+        <ImageHeader 
+            section="Body and Bath"
+            to='/bodyandbath' />
             <div>
             <div className='product-container flex-row'>
                 <div className='product-images-container flex-column'>
