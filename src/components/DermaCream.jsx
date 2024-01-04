@@ -3,18 +3,24 @@ import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 import React, { useState, useEffect } from 'react';
 
+
+const loadFromLocalStorage = (key, defaultValue) => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : defaultValue;
+};
+
+//To save data to local storage
+const saveToLocalStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+};
+
 export default function DermaCream() {
-    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    //Load initial count and items from local storage
+    const initialCount = loadFromLocalStorage('cartCount', 0);
+    const initialItems = loadFromLocalStorage('cartItems', []);
+
     const [count, setCount] = useState(initialCount);
-
-    useEffect(() => {
-        // Update local storage whenever count changes
-        localStorage.setItem('cartCount', count.toString());
-      }, [count]);
-
-    function addToCart() {
-        setCount(count + 1);
-    }
+    const [items, setItems] = useState(initialItems || []);
 
     const dermaCream = { 
         index: 3, 
@@ -30,11 +36,59 @@ export default function DermaCream() {
         description: "Immerse yourself in the calming blend, providing targeted relief for irritated areas. Elevate your skincare routine with this nurturing anti-scratching cream, where gentle care meets effective protection, leaving your skin comforted and resilient against irritation."
       };
 
+    const addToCart = () => {
+        const newItem = {
+            id: dermaCream.index,
+            img: dermaCream.src1,
+            name: dermaCream.name,
+            price: dermaCream.price,
+            quantity: 1,
+        };
+
+        const existingItem = items.find((item) => item.id === newItem.id);
+
+        if (existingItem) {
+            setItems(
+                items.map((item) =>
+                    item.id === existingItem.id
+                        ? { ...item, quantity: item.quantity + 1 }
+                        : item
+                )
+            );
+        } else {
+            setItems([...items, newItem]);
+        }
+
+        setCount(count + 1);
+    };
+
+    // Save count and items to local storage whenever they change
+    useEffect(() => {
+        saveToLocalStorage('cartCount', count);
+        saveToLocalStorage('cartItems', items);
+    }, [count, items]);
+
+    const removeFromCart = (itemId) => {
+        const existingItem = items.find((item) => item.id === itemId);
+
+        if (existingItem) {
+            const updatedItems = items.map((item) =>
+                item.id === itemId
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            );
+
+            setItems(updatedItems.filter((item) => item.quantity > 0));
+            setCount(count - 1);
+        }
+    };
+
     return(
         <>
-        <Header />
         <ImageHeader 
             count={count}
+            item={items}
+            removeFromCart={removeFromCart}
             section="Makeup"
             to='/makeup' />
             <div>

@@ -64,7 +64,7 @@ a {
   cursor: pointer;
   top: 0;
   left: 0;
-  margin-left: 5rem;
+  margin-left: 8rem;
 }
 
 .links-container {
@@ -140,7 +140,7 @@ a {
 /* POPUP MESSAGE WINDOW */
 
 .message-container {
-  position: absolute;
+  position: relative !important;
   justify-content: center;
   border: 1px solid transparent;
   background-color: rgb(225, 225, 225);
@@ -200,18 +200,20 @@ textarea::placeholder, input::placeholder {
 }
 
 .delivery-image {
-  width: 5rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .delivery-container {
   justify-content: space-between;
-  width: 20rem;
+  width: 10rem;
   background-color: #ffffff;
   margin: 1rem 1rem;
   border-radius: 20px;
   border: 1px solid transparent;
   gap: 1rem;
   padding: 1rem 1rem;
+  position: relative !important;
 }
 
 .delivery-box {
@@ -239,6 +241,14 @@ textarea::placeholder, input::placeholder {
 
 .contact-popup-container > div {
   align-items: center;
+}
+
+.about {
+  position: relative !important;
+}
+
+.two-links-header {
+  gap: 5rem;
 }
 
 /* IMAGE HEADER LINK */
@@ -312,7 +322,7 @@ textarea::placeholder, input::placeholder {
 }
 
 .gallery-image-div:hover .product-name {
-  opacity: 1; /* Change opacity on hover */
+  opacity: 1; 
 }
 
 .gallery-image-link {
@@ -416,7 +426,6 @@ textarea::placeholder, input::placeholder {
 }
 
 .popup-content {
-  /* Override default styles here */
   padding: 10px;
   border-radius: 20px;
   background-color: rgb(216, 214, 214) !important;
@@ -477,22 +486,24 @@ textarea::placeholder, input::placeholder {
 .product-cart-details {
   font-size: .5rem;
   font-weight: lighter;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: .2rem;
+  text-align: left;
 }
 
 .product-cart-details h5 {
   margin: 0 0;
 }
 
-.product-cart-container input {
+.product-cart-container .quantity {
   width: 1.1rem;
-  height: 1.2rem;
-  border-radius: 15px;
+  height: 1.1rem;
+  border-radius: 50%;
   padding: 0 .5rem;
+  padding-top: .2rem;
   border: 1px solid grey;
-  font-size: .5rem;
-  align-items: center;
+  font-size: .6rem;
+  text-align: center;
 }
 
 .product-cart-details button {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
+import { Link, Outlet } from 'react-router-dom';
 
 export default function Header() {
 
@@ -13,6 +14,12 @@ export default function Header() {
                     <h1>Beauty Alchemy</h1>
                 </div>
                 <div className="links-container flex-row">
+                <Link to="/" className="link flex-row">   
+                    <div className="div flex-row">
+                        <img width='30px' src="https://img.icons8.com/dotty/80/4D4D4D/home.png"></img>
+                        <div className="link-text">Home</div>
+                    </div>
+                    </Link>
                 <Popup trigger=
                     {<a href="#" className="link flex-row">   
                     <div className="div flex-row">
@@ -60,11 +67,10 @@ export default function Header() {
                     </a>}
                         position="center">
                         <div className="flex-row delivery-container">
-                        <img className='delivery-image' src="https://assets.website-files.com/630e76151b18f0773c9bd0fb/6325c003fed41f0436e9ac07_pexels-anna-nekrashevich-7946210-transcode.mp4"></img>
                             <div className='flex-column delivery-box'>
                                 <h5 className='delivery-text'>About Us</h5>
                                 <div className='delivery-text'>Discover an eco-conscious online shop dedicated to your well-being. <br /> <br /> Our curated selection features a range of natural products crafted with care for your body, face, and hair. <br /> <br /> Embrace sustainability without compromising on quality, and indulge in a healthier, greener self-care routine.</div>
-                                <div className='flex-row contact-popup-container'>
+                                <div className='flex-column contact-popup-container'>
                                     <div className='contact-popup flex-row'>
                                         <img src="https://assets.website-files.com/630e76151b18f0773c9bd0fb/6324593010e9db58f18a1e78_phone.svg"></img>
                                         <div className='link-text link div'>+1 500 235 45 80</div>

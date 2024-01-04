@@ -3,18 +3,23 @@ import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 import React, { useState, useEffect } from 'react';
 
+const loadFromLocalStorage = (key, defaultValue) => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : defaultValue;
+};
+
+//To save data to local storage
+const saveToLocalStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+};
+
 export default function SaneRetinol() {
-    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    //Load initial count and items from local storage
+    const initialCount = loadFromLocalStorage('cartCount', 0);
+    const initialItems = loadFromLocalStorage('cartItems', []);
+
     const [count, setCount] = useState(initialCount);
-
-    useEffect(() => {
-        //Update local storage whenever count changes
-        localStorage.setItem('cartCount', count.toString());
-    }, [count]);
-
-    function addToCart() {
-      setCount(count+1);
-    }
+    const [items, setItems] = useState(initialItems || []);
 
     const saneRetinol = { 
         index: 5, 
@@ -28,13 +33,61 @@ export default function SaneRetinol() {
         price: '65.00',
         discount: '169.00',
         description: "It combines the potent anti-aging benefits of vitamin A with the soothing properties of natural plant extracts, offering a gentle yet effective solution for promoting skin renewal. Infused with azelaic acid, this innovative formula further enhances its skincare prowess, addressing concerns like hyperpigmentation and inflammation for a comprehensive and rejuvenating skincare experience."
-      };
+    };
+
+    const addToCart = () => {
+        const newItem = {
+            id: saneRetinol.index,
+            img: saneRetinol.src1,
+            name: saneRetinol.name,
+            price: saneRetinol.price,
+            quantity: 1,
+        };
+
+        const existingItem = items.find((item) => item.id === newItem.id);
+
+        if (existingItem) {
+            setItems(
+                items.map((item) =>
+                    item.id === existingItem.id
+                        ? { ...item, quantity: item.quantity + 1 }
+                        : item
+                )
+            );
+        } else {
+            setItems([...items, newItem]);
+        }
+
+        setCount(count + 1);
+    };
+
+    //Save count and items to local storage whenever they change
+    useEffect(() => {
+        saveToLocalStorage('cartCount', count);
+        saveToLocalStorage('cartItems', items);
+    }, [count, items]);
+
+    const removeFromCart = (itemId) => {
+        const existingItem = items.find((item) => item.id === itemId);
+
+        if (existingItem) {
+            const updatedItems = items.map((item) =>
+                item.id === itemId
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            );
+
+            setItems(updatedItems.filter((item) => item.quantity > 0));
+            setCount(count - 1);
+        }
+    };
 
     return(
         <>
-        <Header />
         <ImageHeader 
             count={count}
+            item={items}
+            removeFromCart={removeFromCart}
             section="Hair"
             to='/hair' />
             <div>
@@ -65,7 +118,7 @@ export default function SaneRetinol() {
                         <div className='addtocart-button-div'>
                             <button onClick={addToCart}>Add to Cart</button>
                         </div>
-                    </div>
+                </div>
             </div>
         </div>
         <Footer />

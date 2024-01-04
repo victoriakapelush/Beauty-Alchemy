@@ -3,18 +3,24 @@ import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 import React, { useState, useEffect } from 'react';
 
+
+const loadFromLocalStorage = (key, defaultValue) => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : defaultValue;
+};
+
+//To save data to local storage
+const saveToLocalStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+};
+
 export default function RoseQuartzGouache() {
-    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    //Load initial count and items from local storage
+    const initialCount = loadFromLocalStorage('cartCount', 0);
+    const initialItems = loadFromLocalStorage('cartItems', []);
+
     const [count, setCount] = useState(initialCount);
-
-    useEffect(() => {
-        // Update local storage whenever count changes
-        localStorage.setItem('cartCount', count.toString());
-      }, [count]);
-
-    function addToCart() {
-      setCount(count+1);
-    }
+    const [items, setItems] = useState(initialItems || []);
 
     const roseQuartzGouache = { 
         index: 16, 
@@ -29,13 +35,61 @@ export default function RoseQuartzGouache() {
         description: "Transform your skincare ritual with our Rose Quartz Gouache for Facial Massage, a luxurious fusion of traditional beauty techniques and modern elegance. Experience the gentle caress of rose quartz as you elevate your self-care routine, promoting relaxation and enhancing product absorption for a radiant, revitalized complexion that truly glows from within."
       };
 
+    const addToCart = () => {
+        const newItem = {
+            id: roseQuartzGouache.index,
+            img: roseQuartzGouache.src1,
+            name: roseQuartzGouache.name,
+            price: roseQuartzGouache.price,
+            quantity: 1,
+        };
+
+        const existingItem = items.find((item) => item.id === newItem.id);
+
+        if (existingItem) {
+            setItems(
+                items.map((item) =>
+                    item.id === existingItem.id
+                        ? { ...item, quantity: item.quantity + 1 }
+                        : item
+                )
+            );
+        } else {
+            setItems([...items, newItem]);
+        }
+
+        setCount(count + 1);
+    };
+
+    //Save count and items to local storage whenever they change
+    useEffect(() => {
+        saveToLocalStorage('cartCount', count);
+        saveToLocalStorage('cartItems', items);
+    }, [count, items]);
+
+    const removeFromCart = (itemId) => {
+        const existingItem = items.find((item) => item.id === itemId);
+
+        if (existingItem) {
+            const updatedItems = items.map((item) =>
+                item.id === itemId
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            );
+
+            setItems(updatedItems.filter((item) => item.quantity > 0));
+            setCount(count - 1);
+        }
+    };
+
     return(
         <>
-        <Header />
         <ImageHeader 
             section="Hair"
             to='/Hair' 
-            count={count} />
+            count={count}
+            item={items}
+            removeFromCart={removeFromCart} />
             <div>
             <div className='product-container flex-row'>
                 <div className='product-images-container flex-column'>
@@ -63,7 +117,7 @@ export default function RoseQuartzGouache() {
                         <div className='addtocart-button-div'>
                             <button onClick={addToCart}>Add to Cart</button>
                         </div>
-                    </div>
+                </div>
             </div>
         </div>
         <Footer />

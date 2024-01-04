@@ -3,22 +3,27 @@ import ImageHeader from './ImageHeader.jsx'
 import Footer from './Footer.jsx'
 import React, { useState, useEffect } from 'react';
 
+
+const loadFromLocalStorage = (key, defaultValue) => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : defaultValue;
+};
+
+//To save data to local storage
+const saveToLocalStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+};
+
 export default function Misolo() {
-    const initialCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    //Load initial count and items from local storage
+    const initialCount = loadFromLocalStorage('cartCount', 0);
+    const initialItems = loadFromLocalStorage('cartItems', []);
+
     const [count, setCount] = useState(initialCount);
-
-    useEffect(() => {
-        // Update local storage whenever count changes
-        localStorage.setItem('cartCount', count.toString());
-      }, [count]);
-
-    function addToCart() {
-        setCount(count + 1);
-    }
+    const [items, setItems] = useState(initialItems || []);
 
     const misoloCream = { 
         index: 0, 
-        srcBase: 'misolocream.jpg',
         src1: 'https://assets.website-files.com/630fa4e1220d4258b5ef5691/630fc1847b197e2bc1d34c4b_24-01.jpg',
         src2: 'https://assets.website-files.com/630fa4e1220d4258b5ef5691/630fc192f645e664598bf5d9_24-03.jpg',
         src3: 'https://assets.website-files.com/630fa4e1220d4258b5ef5691/630fc1927b197ea1f3d34d4f_24-02.jpg',
@@ -31,11 +36,59 @@ export default function Misolo() {
         description: "Hydrating skincare product designed to nourish and replenish the skin's moisture, leaving it soft and supple. Formulated with premium ingredients, it aims to provide effective hydration and promote a healthy complexion."
     };
 
+    const addToCart = () => {
+        const newItem = {
+            id: misoloCream.index,
+            img: misoloCream.src1,
+            name: misoloCream.name,
+            price: misoloCream.price,
+            quantity: 1,
+        };
+
+        const existingItem = items.find((item) => item.id === newItem.id);
+
+        if (existingItem) {
+            setItems(
+                items.map((item) =>
+                    item.id === existingItem.id
+                        ? { ...item, quantity: item.quantity + 1 }
+                        : item
+                )
+            );
+        } else {
+            setItems([...items, newItem]);
+        }
+
+        setCount(count + 1);
+    };
+
+    //Save count and items to local storage whenever they change
+    useEffect(() => {
+        saveToLocalStorage('cartCount', count);
+        saveToLocalStorage('cartItems', items);
+    }, [count, items]);
+
+    const removeFromCart = (itemId) => {
+        const existingItem = items.find((item) => item.id === itemId);
+
+        if (existingItem) {
+            const updatedItems = items.map((item) =>
+                item.id === itemId
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            );
+
+            setItems(updatedItems.filter((item) => item.quantity > 0));
+            setCount(count - 1);
+        }
+    };
+
     return(
         <>
-        <Header />
         <ImageHeader 
             count={count}
+            item={items}
+            removeFromCart={removeFromCart}
             section="Body and Bath"
             to='/bodyandbath' 
             />
