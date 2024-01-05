@@ -449,6 +449,7 @@ textarea::placeholder, input::placeholder {
 
 .cart-top-info {
   justify-content: space-between;
+  overflow: scroll;
 }
 
 .your-cart-header {
